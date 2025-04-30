@@ -1,7 +1,7 @@
 import azure.functions as func
 import logging
 import os
-from openai import OpenAI
+#from openai import OpenAI
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
@@ -10,7 +10,7 @@ def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     req_body = req.get_json()
-    project_description = req_body.get('project_description')
+    project_description = req_body.get('project')
 
     # Construct prompt
     prompt = f"""
@@ -28,12 +28,13 @@ def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
     Please generate 12 encouragement. 
     """
 
-    client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-    response = client.responses.create(
-        model="gpt-3.5-turbo",
-        input=prompt
-    )
-    output_text = response.output_text
+    # client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+    # response = client.responses.create(
+    #     model="gpt-3.5-turbo",
+    #     input=prompt
+    # )
+    # output_text = response.output_text
+    output_text = 'hhh'
 
     if output_text:
         return func.HttpResponse(output_text)
