@@ -28,16 +28,17 @@ def http_trigger1(req: func.HttpRequest) -> func.HttpResponse:
     Please generate 12 encouragement. 
     """
 
-    client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-    response = client.responses.create(
-        model="gpt-3.5-turbo",
-        input=prompt
-    )
-    response.output_text
-  
+    # client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+    # response = client.responses.create(
+    #     model="gpt-3.5-turbo",
+    #     input=prompt
+    # )
+    # output_text = response.output_text
 
-    if response.output_text:
-        return func.HttpResponse(response.output_text)
+    output_text = 'haahaa'
+
+    if output_text:
+        return func.HttpResponse(output_text)
     else:
         return func.HttpResponse(
              "This HTTP triggered the function, but some error happened when executing function app.",
